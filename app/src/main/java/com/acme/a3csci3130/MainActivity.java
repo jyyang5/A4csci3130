@@ -9,6 +9,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.firebase.ui.database.FirebaseListAdapter;
+import com.google.firebase.analytics.FirebaseAnalytics;
 import com.google.firebase.database.FirebaseDatabase;
 
 public class MainActivity extends Activity {
@@ -17,16 +18,29 @@ public class MainActivity extends Activity {
     private ListView contactListView;
     private FirebaseListAdapter<Contact> firebaseAdapter;
 
+    /**
+     * The {@code FirebaseAnalytics} used to record screen views.
+     */
+    // [START declare_analytics]
+    private FirebaseAnalytics mFirebaseAnalytics;
+    // [END declare_analytics]
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        // [START shared_app_measurement]
+        // Obtain the FirebaseAnalytics instance.
+        mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
+        // [END shared_app_measurement]
+
+
         //Get the app wide shared variables
-        MyApplicationData appData = (MyApplicationData)getApplication();
+        final MyApplicationData appData = (MyApplicationData)getApplication();
 
         //Set-up Firebase
-        appData.firebaseDBInstance = FirebaseDatabase.getInstance();
+        appData.firebaseDBInstance = FirebaseDatabase.getInstance("https://a3csci3130-2e785.firebaseio.com/");
         appData.firebaseReference = appData.firebaseDBInstance.getReference("contacts");
 
         //Get the reference to the UI contents
@@ -39,6 +53,8 @@ public class MainActivity extends Activity {
             protected void populateView(View v, Contact model, int position) {
                 TextView contactName = (TextView)v.findViewById(android.R.id.text1);
                 contactName.setText(model.name);
+
+                //appData.firebaseReference.push().setValue(contactName);
             }
         };
         contactListView.setAdapter(firebaseAdapter);
