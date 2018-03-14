@@ -15,3 +15,4 @@ public class MyApplicationData extends Application {
     public FirebaseDatabase firebaseDBInstance;
 
 }
+
