@@ -53,7 +53,7 @@ public class EspressoTest {
         onView(withId(R.id.listView)).check(matches(isDisplayed()));
         onData(anything()).inAdapterView(withId(R.id.listView)).atPosition(0).perform((click()));
 
-        onView(withId(R.id.name1)).check(matches(withText("Mike")));//satisfy 2 conditions
+        onView(withId(R.id.name)).check(matches(withText("Mike")));//satisfy 2 conditions
         onView(withId(R.id.businessNum)).check(matches(withText("111111111")));
         onView(withId(R.id.provience)).check(matches(withText("NS")));
         onView(withId(R.id.primrayBusiness)).check(matches(withText("Fisher")));

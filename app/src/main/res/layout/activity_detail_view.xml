@@ -49,7 +49,7 @@
         android:hint="Primray Business"
         app:layout_constraintLeft_toRightOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/name1" />
+        app:layout_constraintTop_toBottomOf="@+id/name" />
 
     <Button
         android:id="@+id/updateButton"
@@ -73,7 +73,7 @@
         app:layout_constraintTop_toBottomOf="@+id/provience" />
 
     <EditText
-        android:id="@+id/name1"
+        android:id="@+id/name"
         android:layout_width="395dp"
         android:layout_height="43dp"
         android:layout_marginStart="8dp"

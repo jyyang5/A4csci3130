@@ -22,7 +22,7 @@ public class DetailViewActivity extends Activity {
 
         appState = ((MyApplicationData) getApplicationContext());
         businessNumField = (EditText) findViewById(R.id.businessNum);
-        nameField = (EditText) findViewById(R.id.name1);
+        nameField = (EditText) findViewById(R.id.name);
         primrayBusinessField = (EditText) findViewById(R.id.primrayBusiness);
         addressField = (EditText) findViewById(R.id.address);
         provienceField = (EditText) findViewById(R.id.provience);
@@ -37,7 +37,7 @@ public class DetailViewActivity extends Activity {
     }
 
     public void updateContact(View v){
-        //TODO: Update contact funcionality
+        //Update contact funcionality
         String id = receivedPersonInfo.uid;
 
         //String uid = appState.firebaseReference.push().getKey();
@@ -53,11 +53,12 @@ public class DetailViewActivity extends Activity {
         finish();
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
+
     }
 
     public void eraseContact(View v)
     {
-        //TODO: Erase contact functionality
+        //Erase contact functionality
         appState = ((MyApplicationData) getApplicationContext());
         appState.firebaseReference.child(receivedPersonInfo.uid).removeValue();
         finish();
